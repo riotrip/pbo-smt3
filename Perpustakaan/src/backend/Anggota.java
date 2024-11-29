@@ -76,12 +76,12 @@ public class Anggota {
         ResultSet rs = DBHelper.selectQuery("SELECT * FROM anggota");
         try {
             while (rs.next()) {
-                Anggota anggota01 = new Anggota();
-                anggota01.setIdAnggota(rs.getInt("idanggota"));
-                anggota01.setNama(rs.getString("nama"));
-                anggota01.setAlamat(rs.getString("alamat"));
-                anggota01.setTelepon(rs.getString("telepon"));
-                listAnggota.add(anggota01);
+                Anggota anggota = new Anggota();
+                anggota.setIdAnggota(rs.getInt("idanggota"));
+                anggota.setNama(rs.getString("nama"));
+                anggota.setAlamat(rs.getString("alamat"));
+                anggota.setTelepon(rs.getString("telepon"));
+                listAnggota.add(anggota);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -97,12 +97,12 @@ public class Anggota {
         ResultSet rs = DBHelper.selectQuery(sql);
         try {
             while (rs.next()) {
-                Anggota anggota01 = new Anggota();
-                anggota01.setIdAnggota(rs.getInt("idanggota"));
-                anggota01.setNama(rs.getString("nama"));
-                anggota01.setAlamat(rs.getString("alamat"));
-                anggota01.setTelepon(rs.getString("telepon"));
-                listAnggota.add(anggota01);
+                Anggota anggota = new Anggota();
+                anggota.setIdAnggota(rs.getInt("idanggota"));
+                anggota.setNama(rs.getString("nama"));
+                anggota.setAlamat(rs.getString("alamat"));
+                anggota.setTelepon(rs.getString("telepon"));
+                listAnggota.add(anggota);
             }
         } catch (Exception e) {
             e.printStackTrace();
