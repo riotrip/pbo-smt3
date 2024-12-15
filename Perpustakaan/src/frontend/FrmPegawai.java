@@ -152,6 +152,11 @@ public class FrmPegawai extends javax.swing.JFrame {
         jLabel7.setText("Username");
 
         btnCek.setText("Cek");
+        btnCek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Password");
 
@@ -166,6 +171,11 @@ public class FrmPegawai extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblPegawai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPegawaiMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tblPegawai);
 
         btnSimpan.setText("Simpan");
@@ -344,6 +354,34 @@ public class FrmPegawai extends javax.swing.JFrame {
         // TODO add your handling code here:
         cari(txtCari.getText());
     }//GEN-LAST:event_btnCariActionPerformed
+
+    private void tblPegawaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPegawaiMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblPegawai.getModel();
+        int row = tblPegawai.getSelectedRow();
+        
+        txtNama.setText(model.getValueAt(row, 1).toString());
+        txtAlamat.setText(model.getValueAt(row, 2).toString());
+        txtNotelp.setText(model.getValueAt(row, 3).toString());
+        txtJabatan.setText(model.getValueAt(row, 4).toString());
+        txtUsername.setText(model.getValueAt(row, 5).toString());
+        txtPassword.setText(model.getValueAt(row, 6).toString());
+    }//GEN-LAST:event_tblPegawaiMouseClicked
+
+    private void btnCekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekActionPerformed
+        // TODO add your handling code here:
+        String username = txtUsername.getText();
+        String password = txtPassword.getText();
+
+        Pegawai pegawai = new Pegawai();
+        boolean isExist = pegawai.isUsernamePasswordExist(username, password);
+
+        if (isExist) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Username dan Password sudah digunakan!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Username dan Password tersedia", "Info", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnCekActionPerformed
 
     /**
      * @param args the command line arguments

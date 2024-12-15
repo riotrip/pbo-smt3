@@ -172,4 +172,22 @@ public class Pegawai {
         String SQL = "DELETE FROM pegawai WHERE idpegawai = '" + this.idPegawai + "'";
         DBHelper.executeQuery(SQL);
     }
+    
+    public boolean isUsernamePasswordExist(String username, String password) {
+        boolean exist = false;
+        try {
+            String sql = "SELECT COUNT(*) FROM pegawai WHERE username = ? AND password = ?";
+            PreparedStatement stmt = DBHelper.getConnection().prepareStatement(sql);
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                exist = rs.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return exist;
+    }    
 }

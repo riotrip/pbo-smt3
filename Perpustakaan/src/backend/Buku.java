@@ -1,7 +1,7 @@
 package backend;
 
-import java.util.ArrayList;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Buku {
     private int idbuku;
@@ -50,16 +50,6 @@ public class Buku {
         this.penulis = penulis;
     }
 
-    public Buku() {
-    }
-
-    public Buku(Kategori kategori, String judul, String penerbit, String penulis) {
-        this.kategori = kategori;
-        this.judul = judul;
-        this.penerbit = penerbit;
-        this.penulis = penulis;
-    }
-    
     public Buku getById(int id) {
         Buku buku = new Buku();
         ResultSet rs = DBHelper.selectQuery(
@@ -73,7 +63,7 @@ public class Buku {
             "k.keterangan AS keterangan " +
             "FROM buku b " +
             "LEFT JOIN kategori k ON b.idkategori = k.idkategori " +
-            "WHERE b.idbuku = '" + id + "'"
+            "WHERE b.idbuku = " + id
         );
 
         try {
@@ -127,6 +117,7 @@ public class Buku {
 
         return ListBuku;
     }
+
     public ArrayList<Buku> search(String keyword) {
         ArrayList<Buku> ListBuku = new ArrayList<>();
         ResultSet rs = DBHelper.selectQuery(

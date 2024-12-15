@@ -319,7 +319,7 @@ public class FrmBuku extends javax.swing.JFrame {
         cmbKategori.getModel().setSelectedItem(buku.getKategori());
         txtJudul.setText(buku.getJudul());
         txtPenulis.setText(buku.getPenulis());
-        txtPenerbit.setText(buku.getPenerbit());      
+        txtPenerbit.setText(buku.getPenerbit());     
     }//GEN-LAST:event_tblBukuMouseClicked
 
     /**
