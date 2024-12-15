@@ -5,16 +5,8 @@ import java.sql.*;
 
 public class Kategori {
     private int idkategori;
-    private String nama, keterangan;
-
-    public Kategori() {
-
-    }
-
-    public Kategori(String nama, String keterangan) {
-        this.nama = nama;
-        this.keterangan = keterangan;
-    }
+    private String nama;
+    private String keterangan;
 
     public int getIdkategori() {
         return idkategori;
@@ -40,7 +32,14 @@ public class Kategori {
         this.keterangan = keterangan;
     }
     
-    
+    public Kategori() {
+
+    }
+
+    public Kategori(String nama, String keterangan) {
+        this.nama = nama;
+        this.keterangan = keterangan;
+    }   
 
     public Kategori getById(int id) {
         Kategori kat = new Kategori();
@@ -63,7 +62,7 @@ public class Kategori {
     public ArrayList<Kategori> getAll() {
         ArrayList<Kategori> ListKategori = new ArrayList();
 
-        ResultSet rs = DBHelper.selectQuery("SELECT * kategori");
+        ResultSet rs = DBHelper.selectQuery("SELECT * FROM kategori");
 
         try {
             while (rs.next()) {

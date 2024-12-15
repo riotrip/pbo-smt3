@@ -18,6 +18,11 @@ public class DBHelper {
             }
         }
     }
+    
+    public static Connection getConnection() {
+        bukaKoneksi(); 
+        return koneksi;
+    }
 
     public static int insertQueryGetId(String query) {
         bukaKoneksi();
