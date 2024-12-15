@@ -36,9 +36,16 @@ public class FrmPeminjaman extends javax.swing.JFrame {
     
     private boolean isValidDate(String dateStr) {
         try {
+<<<<<<< HEAD
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             formatter.setLenient(false); 
             formatter.parse(dateStr); 
+=======
+            // Format tanggal yyyy-MM-dd
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            formatter.setLenient(false); // Non-lenient untuk memastikan validitas tanggal
+            formatter.parse(dateStr);    // Coba parsing tanggal
+>>>>>>> fe3010e150e04d78158d09a1dcd29734545fecc9
             return true;
         } catch (Exception e) {
             return false;
@@ -49,14 +56,25 @@ public class FrmPeminjaman extends javax.swing.JFrame {
         txtIdPeminjaman.setText("0");
         txtIdAnggota.setText("");
         txtIdBuku.setText("");
+<<<<<<< HEAD
         txtTanggalPinjam.setText(getCurrentDate()); 
+=======
+        txtTanggalPinjam.setText(getCurrentDate()); // Isi dengan current date
+>>>>>>> fe3010e150e04d78158d09a1dcd29734545fecc9
         txtTanggalKembali.setText("");
         lblNamaAnggota.setText("Nama Anggota");
         lblJudulBuku.setText("Judul Buku");
 
+<<<<<<< HEAD
         txtIdAnggota.setEnabled(true);
         txtIdBuku.setEnabled(true);
         txtTanggalKembali.setEnabled(false); 
+=======
+        // Default: semua field aktif (untuk peminjaman)
+        txtIdAnggota.setEnabled(true);
+        txtIdBuku.setEnabled(true);
+        txtTanggalKembali.setEnabled(false); // Disable pengembalian secara default
+>>>>>>> fe3010e150e04d78158d09a1dcd29734545fecc9
     }
     
     private void tampilkanDataPeminjaman() {
@@ -100,12 +118,20 @@ public class FrmPeminjaman extends javax.swing.JFrame {
     private void simpanPeminjaman() {
         Peminjaman p = new Peminjaman();
         p.setIdPeminjaman(Integer.parseInt(txtIdPeminjaman.getText()));
+<<<<<<< HEAD
         p.setIdPegawai(1);
+=======
+        p.setIdPegawai(1); // Contoh: Pegawai admin default
+>>>>>>> fe3010e150e04d78158d09a1dcd29734545fecc9
         p.setAnggota(new Anggota().getById(Integer.parseInt(txtIdAnggota.getText())));
         p.setBuku(new Buku().getById(Integer.parseInt(txtIdBuku.getText())));
         p.setTanggalPinjam(txtTanggalPinjam.getText());
         p.save();
 
+<<<<<<< HEAD
+=======
+        // Refresh tabel dan kosongkan form
+>>>>>>> fe3010e150e04d78158d09a1dcd29734545fecc9
         tampilkanDataPeminjaman();
         kosongkanForm();
     }
@@ -113,8 +139,14 @@ public class FrmPeminjaman extends javax.swing.JFrame {
     private void simpanPengembalian() {
         String tanggalPengembalian = txtTanggalKembali.getText();
 
+<<<<<<< HEAD
         if (!isValidDate(tanggalPengembalian)) {
             JOptionPane.showMessageDialog(this, "Tanggal pengembalian harus dalam format YYYY-MM-DD.");
+=======
+        // Validasi format tanggal
+        if (!isValidDate(tanggalPengembalian)) {
+            JOptionPane.showMessageDialog(this, "Tanggal pengembalian harus dalam format yyyy-MM-dd.");
+>>>>>>> fe3010e150e04d78158d09a1dcd29734545fecc9
             return;
         }
 
@@ -127,6 +159,10 @@ public class FrmPeminjaman extends javax.swing.JFrame {
             kosongkanForm();
             JOptionPane.showMessageDialog(this, "Buku berhasil dikembalikan.");
 
+<<<<<<< HEAD
+=======
+            // Disable tombol setelah pengembalian selesai
+>>>>>>> fe3010e150e04d78158d09a1dcd29734545fecc9
             btnSimpanPengembalian.setEnabled(false);
         } else {
             JOptionPane.showMessageDialog(this, "Peminjaman tidak ditemukan.");
@@ -367,24 +403,47 @@ public class FrmPeminjaman extends javax.swing.JFrame {
 
     private void tblPeminjamanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPeminjamanMouseClicked
         // TODO add your handling code here:
+<<<<<<< HEAD
         int selectedRow = tblPeminjaman.getSelectedRow(); 
         DefaultTableModel model = (DefaultTableModel) tblPeminjaman.getModel();
 
+=======
+        int selectedRow = tblPeminjaman.getSelectedRow(); // Ambil baris yang dipilih
+        DefaultTableModel model = (DefaultTableModel) tblPeminjaman.getModel();
+
+        // Ambil data dari tabel
+>>>>>>> fe3010e150e04d78158d09a1dcd29734545fecc9
         int idPeminjaman = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
         String tanggalPengembalian = model.getValueAt(selectedRow, 5) != null
                 ? model.getValueAt(selectedRow, 5).toString()
                 : "";
 
+<<<<<<< HEAD
+=======
+        // Isi data ke form
+>>>>>>> fe3010e150e04d78158d09a1dcd29734545fecc9
         txtIdPeminjaman.setText(String.valueOf(idPeminjaman));
         txtTanggalKembali.setText(tanggalPengembalian);
 
         if (tanggalPengembalian.isEmpty()) {
+<<<<<<< HEAD
             btnSimpanPengembalian.setEnabled(true);
             txtTanggalKembali.setEnabled(true);
 
             txtIdAnggota.setEnabled(false);
             txtIdBuku.setEnabled(false);
         } else {
+=======
+            // Jika buku belum dikembalikan, aktifkan tombol Simpan Pengembalian
+            btnSimpanPengembalian.setEnabled(true);
+            txtTanggalKembali.setEnabled(true);
+
+            // Disable semua field kecuali tanggalPengembalian
+            txtIdAnggota.setEnabled(false);
+            txtIdBuku.setEnabled(false);
+        } else {
+            // Jika buku sudah dikembalikan, disable tombol dan semua field
+>>>>>>> fe3010e150e04d78158d09a1dcd29734545fecc9
             btnSimpanPengembalian.setEnabled(false);
             txtTanggalKembali.setEnabled(false);
             txtIdAnggota.setEnabled(false);
@@ -394,7 +453,11 @@ public class FrmPeminjaman extends javax.swing.JFrame {
 
     private void btnSimpanPengembalianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanPengembalianActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
         if (txtTanggalKembali.isEnabled()) { 
+=======
+        if (txtTanggalKembali.isEnabled()) { // Hanya berlaku saat pengembalian
+>>>>>>> fe3010e150e04d78158d09a1dcd29734545fecc9
             simpanPengembalian();
         }
     }//GEN-LAST:event_btnSimpanPengembalianActionPerformed

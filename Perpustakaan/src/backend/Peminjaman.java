@@ -4,8 +4,13 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class Peminjaman {
+<<<<<<< HEAD
     private int idPeminjaman;   
     private int idPegawai;     
+=======
+    private int idPeminjaman;   // ID Peminjaman
+    private int idPegawai;      // ID Pegawai
+>>>>>>> fe3010e150e04d78158d09a1dcd29734545fecc9
     private Anggota anggota;
     private Buku buku;
     private String tanggalPinjam;
@@ -14,6 +19,10 @@ public class Peminjaman {
     public Peminjaman() {
     }
 
+<<<<<<< HEAD
+=======
+    // Constructor Tunggal
+>>>>>>> fe3010e150e04d78158d09a1dcd29734545fecc9
     public Peminjaman(int idPeminjaman, int idPegawai, Anggota anggota, Buku buku, String tanggalPinjam, String tanggalKembali) {
         this.idPeminjaman = idPeminjaman;
         this.idPegawai = idPegawai;
@@ -23,6 +32,7 @@ public class Peminjaman {
         this.tanggalKembali = tanggalKembali;
     }
 
+    // Getter and Setter
     public int getIdPeminjaman() {
         return idPeminjaman;
     }
@@ -71,8 +81,15 @@ public class Peminjaman {
         this.tanggalKembali = tanggalKembali;
     }
 
+<<<<<<< HEAD
     public void save() {
         if (idPeminjaman == 0) {
+=======
+    // CRUD Operations
+    public void save() {
+        if (idPeminjaman == 0) {
+            // Proses Peminjaman
+>>>>>>> fe3010e150e04d78158d09a1dcd29734545fecc9
             String query = "INSERT INTO peminjaman (idpegawai, idanggota, idbuku, tanggalpinjam, tanggalKembali) VALUES ("
                     + idPegawai + ", "
                     + anggota.getIdAnggota() + ", "
@@ -80,6 +97,10 @@ public class Peminjaman {
                     + tanggalPinjam + "', NULL)";
             this.idPeminjaman = DBHelper.insertQueryGetId(query);
         } else {
+<<<<<<< HEAD
+=======
+            // Proses Kembali
+>>>>>>> fe3010e150e04d78158d09a1dcd29734545fecc9
             String query = "UPDATE peminjaman SET tanggalKembali = '" + tanggalKembali
                     + "' WHERE idpeminjaman = " + idPeminjaman;
             DBHelper.executeQuery(query);
